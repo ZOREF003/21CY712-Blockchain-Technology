@@ -1,0 +1,99 @@
+<html>
+<head><title> Demo Page </title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+
+    <script>	
+	
+	var account;
+	window.addEventListener('load', async () => {
+		console.log("In Event Listener");
+	
+		if (typeof window.ethereum !== 'undefined') { 
+			console.log("MetaMask is Available :) !"); 
+			}
+			
+		// Modern DApp browsers
+		if (window.ethereum) {
+			window.web3 = new Web3(ethereum);
+						
+			// To Capture the account details from MetaMask
+			const accounts = await ethereum.enable();
+			account = accounts[0];
+				
+			}
+			console.log(account);
+		
+		abi = [
+	{
+		"inputs": [
+			{
+				"internalType": "uint128",
+				"name": "num",
+				"type": "uint128"
+			},
+			{
+				"internalType": "string",
+				"name": "_name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "_wallet",
+				"type": "address"
+			}
+		],
+		"name": "store",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "retrieve",
+		"outputs": [
+			{
+				"internalType": "uint128",
+				"name": "",
+				"type": "uint128"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+];
+
+
+contractaddress = '0xDB1839192930F8240E84fa03b3B594B8d6649504';
+
+var myContract = new web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});							
+var result = myContract.methods.store(44,"Ram","0xb92dF55B99f8F43742d6121E8ebfEEb31B4ba4d0").send(function (err, result)
+var result = myContract.methods.retrieve().call(function (err, result) {
+				
+		console.log("Result: ", result);
+			if (result) { console.log(result); }					
+		});			
+
+var result = myContract.methods.retrieve().call(function (err, result) {
+				
+		console.log("Result: ", result);
+			if (result) { console.log(result[0]); }					
+		});			
+
+		});
+		
+		
+    </script>	
+</body>
+</html>	
