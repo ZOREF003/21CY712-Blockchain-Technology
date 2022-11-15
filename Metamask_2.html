@@ -78,7 +78,7 @@
 contractaddress = '0xDB1839192930F8240E84fa03b3B594B8d6649504';
 
 var myContract = new web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});							
-var result = myContract.methods.store(44,"Ram","0xb92dF55B99f8F43742d6121E8ebfEEb31B4ba4d0").send(function (err, result)
+var result = myContract.methods.store(44,"Ram","0xb92dF55B99f8F43742d6121E8ebfEEb31B4ba4d0").send(function (err, result))
 var result = myContract.methods.retrieve().call(function (err, result) {
 				
 		console.log("Result: ", result);
