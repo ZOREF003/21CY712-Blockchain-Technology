@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <img src="Blockadmin.jpg" alt="Blockadmin.jpg" style="width:1700px;">
+    <form>
+        <h2>Blockchain Complaint Box</h2>
+    <input type = button onclick="location.href='complaint1.html'" value="complaint_1">
+    <input type = button onclick="location.href='complaint2.html'" value="complaint_2">
+    <input type = button onclick="location.href='complaint3.html'" value="complaint_3">
+    <input type = button onclick="location.href='complaint4.html'" value="complaint_4">
+            
+        <input type = button onclick="location.href='Login.html'" value="Logout">
+    </div>
+    </form>
+
+     <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+
+    <script>    
+    
+    var account;
+    window.addEventListener('load', async () => {
+        console.log("In Event Listener");
+    
+        if (typeof window.ethereum !== 'undefined') { 
+            console.log("MetaMask is Available :) !"); 
+            }
+            
+        // Modern DApp browsers
+        if (window.ethereum) {
+            window.web3 = new Web3(ethereum);
+                        
+            // To Capture the account details from MetaMask
+            const accounts = await ethereum.enable();
+            account = accounts[0];
+                
+            }
+            console.log(account);           
+        abi = [ 
+        
+
+    {
+        "inputs": [],
+        "stateMutability": "nonpayable",
+        "type": "constructor"
+    },
+    {
+        "inputs": [
+            {
+                "internalType": "string",
+                "name": "_complaint",
+                "type": "string"
+            }
+        ],
+        "name": "retrieve",
+        "outputs": [
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            },
+            {
+                "internalType": "string",
+                "name": "",
+                "type": "string"
+            }
+        ],
+        "stateMutability": "view",
+        "type": "function"
+    }
+
+
+
+        ];
+
+        contractaddress = '0xDA0bab807633f07f013f94DD0E6A4F96F8742B53';
+
+var myContract = new Web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
+                            
+var result = myContract.methods.store(hari).send(function (err, result) {
+                
+        console.log("Result: ", result);
+            if (result) { console.log(result); }                    
+        });         
+
+var result = myContract.methods.retrieve().call(function (err, result) {
+                
+        console.log("Result: ", result);
+            if (result) { console.log(result[0]); }                 
+        });         
+
+        });
+
+</body>
+</html>
