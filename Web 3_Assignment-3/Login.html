@@ -93,7 +93,7 @@ contractaddress = '0xb3F99011D65fd3CeE28fae42C5FAf53916ef3186';
 
 var myContract = new web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
 							
-var result = myContract.methods.submit('user1').send(function (err, result) {
+var result = myContract.methods.submit('user2','user2').send(function (err, result) {
 				
 		console.log("Result: ", result);
 			if (result) { console.log(result); }					
