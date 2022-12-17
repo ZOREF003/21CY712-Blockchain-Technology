@@ -54,48 +54,49 @@
         abi = [ 
         
 
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "_User_Name",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_Email",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_Type_of_complaint",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_Target_address",
-                "type": "string"
-            }
-        ],
-        "name": "store",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    }
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_User_Name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Type_of_complaint",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Target_address",
+				"type": "string"
+			}
+		],
+		"name": "store",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	}
+
 
 
         ];
 
-        contractaddress = '0xDA0bab807633f07f013f94DD0E6A4F96F8742B53';
+        contractaddress = '0xbda660472C5F1Fd0dD81f0CEcbC6bEd80A7220a3';
 
 var myContract = new Web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
                             
-var result = myContract.methods.store(hari).send(function (err, result) {
+var result = myContract.methods.store("user2","user2@gmail.com","Ransomeware","bc1qhe97wy06z3xy3ptlta08jtfkauuwj2d0u4mks9").send(function (err, result) {
                 
         console.log("Result: ", result);
             if (result) { console.log(result); }                    
