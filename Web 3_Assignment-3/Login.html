@@ -43,43 +43,64 @@
             console.log(account);           
         abi = [ 
         
-    {
-        "inputs": [
-            {
-                "internalType": "string",
-                "name": "_Email",
-                "type": "string"
-            },
-            {
-                "internalType": "string",
-                "name": "_Password",
-                "type": "string"
-            }
-        ],
-        "name": "submit",
-        "outputs": [],
-        "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "inputs": [],
-        "stateMutability": "nonpayable",
-        "type": "constructor"
-    }
+	
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_Email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Password",
+				"type": "string"
+			}
+		],
+		"name": "submit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_Email",
+				"type": "string"
+			}
+		],
+		"name": "retrieve",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+
 
         ];
 
-        contractaddress = '0xd8b934580fcE35a11B58C6D73aDeE468a2833fa8';
+        contractaddress = '0xb3F99011D65fd3CeE28fae42C5FAf53916ef3186';
 
 var myContract = new Web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
                             
-var result = myContract.methods.store(hari).send(function (err, result) {
+var result = myContract.methods.store('user1').send(function (err, result) {
                 
         console.log("Result: ", result);
             if (result) { console.log(result); }                    
         });         
 
-var result = myContract.methods.retrieve().call(function (err, result) {
+var result = myContract.methods.retrieve('user1').call(function (err, result) {
                 
         console.log("Result: ", result);
             if (result) { console.log(result[0]); }                 
