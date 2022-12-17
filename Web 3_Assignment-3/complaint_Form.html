@@ -29,31 +29,32 @@
         <input type = button onclick="location.href='Login.html'" value="Logout">
     </form> 
 
-    <script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/web3@1.2.8/dist/web3.js"></script>
 
-    <script>    
-    
-    var account;
-    window.addEventListener('load', async () => {
-        console.log("In Event Listener");
-    
-        if (typeof window.ethereum !== 'undefined') { 
-            console.log("MetaMask is Available :) !"); 
-            }
-            
-        // Modern DApp browsers
-        if (window.ethereum) {
-            window.web3 = new Web3(ethereum);
-                        
-            // To Capture the account details from MetaMask
-            const accounts = await ethereum.enable();
-            account = accounts[0];
-                
-            }
-            console.log(account);           
-        abi = [ 
-        
-
+    <script>	
+	
+	var account;
+	window.addEventListener('load', async () => {
+		console.log("In Event Listener");
+	
+		if (typeof window.ethereum !== 'undefined') { 
+			console.log("MetaMask is Available :) !"); 
+			}
+			
+		// Modern DApp browsers
+		if (window.ethereum) {
+			window.web3 = new Web3(ethereum);
+						
+			// To Capture the account details from MetaMask
+			const accounts = await ethereum.enable();
+			account = accounts[0];
+				
+			}
+			console.log(account);
+		
+		abi = [
+	
+	
 	{
 		"inputs": [
 			{
@@ -88,30 +89,29 @@
 		"type": "constructor"
 	}
 
+];
 
 
-        ];
+contractaddress = '0xbda660472C5F1Fd0dD81f0CEcbC6bEd80A7220a3';
 
-        contractaddress = '0xbda660472C5F1Fd0dD81f0CEcbC6bEd80A7220a3';
-
-var myContract = new Web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
-                            
-var result = myContract.methods.submit("user2","user2@gmail.com","Ransomeware","bc1qhe97wy06z3xy3ptlta08jtfkauuwj2d0u4mks9").send(function (err, result) {
-                
-        console.log("Result: ", result);
-            if (result) { console.log(result); }                    
-        });         
+var myContract = new web3.eth.Contract(abi,contractaddress, {from: account, gasPrice: '4000000000', gas: '8000000'});
+							
+var result = myContract.methods.submit('user2','user2@gmail.com',"Ransomeware","bc1qhe97wy06z3xy3ptlta08jtfkauuwj2d0u4mks9").send(function (err, result) {
+				
+		console.log("Result: ", result);
+			if (result) { console.log(result); }					
+		});			
 
 var result = myContract.methods.retrieve().call(function (err, result) {
-                
-        console.log("Result: ", result);
-            if (result) { console.log(result[0]); }                 
-        });         
+				
+		console.log("Result: ", result);
+			if (result) { console.log(result[0]); }					
+		});			
 
-        });
-
-        
-        
-    </script>   
+		});
+		
+		
+    </script>	
+	
 </body>
 </html>
