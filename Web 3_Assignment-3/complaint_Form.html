@@ -56,6 +56,50 @@
 	
 	
 	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_Email",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Type_of_complaint",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_Target_address",
+				"type": "string"
+			}
+		],
+		"name": "retrieve",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "string",
@@ -78,15 +122,10 @@
 				"type": "string"
 			}
 		],
-		"name": "store",
+		"name": "submit",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
-	},
-	{
-		"inputs": [],
-		"stateMutability": "nonpayable",
-		"type": "constructor"
 	}
 
 ];
